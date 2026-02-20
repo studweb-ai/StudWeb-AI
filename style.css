@@ -108,10 +108,12 @@ body {
     }
 
     .header-container {
-        padding: 0 15px;
+        padding-left: 5px;
     }
 
     .logo img {
+        margin-right: auto;
+        margin-left: -20px;
         height: 90px;
     }
 }
