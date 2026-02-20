@@ -85,15 +85,6 @@ body {
     opacity: 0.7;
 }
 
-/* ================= MENU BURGER ================= */
-
-.menu-toggle {
-    display: none;
-    font-size: 26px;
-    cursor: pointer;
-    color: #fff;
-}
-
 /* ================= SCROLL ANIMATION ================= */
 
 
@@ -104,29 +95,24 @@ body {
 
     .nav {
         position: absolute;
-        top: 80px;
-        right: 0;
-
-        background: rgba(40, 40, 40, 0.95);
-        /* blur supprimé */
-        
-        width: 220px;
-        padding: 20px;
-        border-radius: 20px;
-
-        display: none;
-        flex-direction: column;
-        gap: 20px;
-
-        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    }
-
-    .nav.active {
+        left: 50%;
+        transform: translateX(-50%);
         display: flex;
+        gap: 18px;
+        font-size: 13px;
+        flex-direction: row;
+        background: transparent;
+        box-shadow: none;
+        width: auto;
+        padding: 0;
     }
 
-    .menu-toggle {
-        display: block;
+    .header-container {
+        padding: 0 15px;
+    }
+
+    .logo img {
+        height: 90px;
     }
 }
 
