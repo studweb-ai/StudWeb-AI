@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudWeb AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="mainHeader">
+    <div class="header-container">
+        <div class="logo">
+            <img src="partiel.png" alt="StudWeb AI">
+        </div>
+        <nav class="nav">
+            <a href="index.html" class="active">Accueil</a>
+            <a href="services.html">Services</a>
+            <a href="offres.html">Offres</a>
+            <a href="#quote">Devis</a>
+        </nav>
+        <div class="header-actions">
+            <div class="cart-icon" onclick="toggleCart()">
+                🛒
+                <span class="cart-badge" id="cartBadge">0</span>
+            </div>
+            <a href="#quote" class="btn-cta-header">Démarrer →</a>
+        </div>
+    </div>
+</header>
+
+<!-- CART OVERLAY -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-bg">
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+        <div class="hero-orb hero-orb-3"></div>
+    </div>
+
+    <div class="hero-eyebrow">
+        <span class="dot"></span>
+        Powered by AI · Sites web nouvelle génération
+    </div>
+
+    <h1>
+        Votre site web<br>
+        <span class="gradient-text">créé par l'IA</span>
+    </h1>
+
+    <p class="hero-sub">
+        Des sites modernes, performants et personnalisés — livrés en temps record grâce à l'intelligence artificielle.
+    </p>
+
+    <div class="hero-actions">
+        <a href="#quote" class="btn-primary">Obtenir un devis gratuit →</a>
+        <a href="services.html" class="btn-secondary">Voir nos services</a>
+    </div>
+
+    <div class="hero-stats">
+        <div class="hero-stat">
+            <div class="num">48h</div>
+            <div class="label">Délai de livraison</div>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+            <div class="num">100%</div>
+            <div class="label">Responsive</div>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+            <div class="num">A+</div>
+            <div class="label">Score SEO</div>
+        </div>
+    </div>
+</section>
+
+<!-- HORIZONTAL SCROLL SHOWCASE -->
+<section class="showcase-section">
+    <div class="section-label">
+        <span class="section-eyebrow">Prototypes</span>
+        <h2 class="section-title">Sites créés pour nos clients</h2>
+        <p class="section-sub">Glissez pour explorer nos réalisations</p>
+    </div>
+
+    <div class="scroll-track-wrapper">
+        <div class="scroll-track" id="scrollTrack">
+            <!-- Original cards -->
+            <div class="site-card">
+                <img class="site-card-img" src="helios-preview.png" alt="Helios Store">
+                <div class="site-card-body">
+                    <span class="site-card-title">Helios Store</span>
+                    <span class="site-card-tag">E-commerce</span>
+                </div>
+            </div>
+            <div class="site-card">
+                <img class="site-card-img" src="projet1.png" alt="Site vitrine">
+                <div class="site-card-body">
+                    <span class="site-card-title">Site Vitrine Pro</span>
+                    <span class="site-card-tag">Vitrine</span>
+                </div>
+            </div>
+            <div class="site-card">
+                <img class="site-card-img" src="projet2.png" alt="Boutique">
+                <div class="site-card-body">
+                    <span class="site-card-title">Boutique Mode</span>
+                    <span class="site-card-tag">E-commerce</span>
+                </div>
+            </div>
+            <div class="site-card">
+                <img class="site-card-img" src="projet3.jpg" alt="IA Automatisation">
+                <div class="site-card-body">
+                    <span class="site-card-title">Automation IA</span>
+                    <span class="site-card-tag">IA</span>
+                </div>
+            </div>
+            <div class="site-card">
+                <img class="site-card-img" src="img1.png" alt="Dev">
+                <div class="site-card-body">
+                    <span class="site-card-title">Dashboard Analytics</span>
+                    <span class="site-card-tag">App Web</span>
+                </div>
+            </div>
+            <div class="site-card">
+                <img class="site-card-img" src="img2.png" alt="Dev 2">
+                <div class="site-card-body">
+                    <span class="site-card-title">Landing Page</span>
+                    <span class="site-card-tag">Vitrine</span>
+                </div>
+            </div>
+            <div class="site-card">
+                <img class="site-card-img" src="img3.png" alt="Dev 3">
+                <div class="site-card-body">
+                    <span class="site-card-title">SaaS Platform</span>
+                    <span class="site-card-tag">IA</span>
+                </div>
+            </div>
+            <!-- Duplicate for infinite loop -->
+            <div class="site-card">
+                <img class="site-card-img" src="helios-preview.png" alt="Helios Store">
+                <div class="site-card-body">
+                    <span class="site-card-title">Helios Store</span>
+                    <span class="site-card-tag">E-commerce</span>
+                </div>
+            </div>
+            <div class="site-card">
+                <img class="site-card-img" src="projet1.png" alt="Site vitrine">
+                <div class="site-card-body">
+                    <span class="site-card-title">Site Vitrine Pro</span>
+                    <span class="site-card-tag">Vitrine</span>
+                </div>
+            </div>
+            <div class="site-card">
+                <img class="site-card-img" src="projet2.png" alt="Boutique">
+                <div class="site-card-body">
+                    <span class="site-card-title">Boutique Mode</span>
+                    <span class="site-card-tag">E-commerce</span>
+                </div>
+            </div>
+            <div class="site-card">
+                <img class="site-card-img" src="projet3.jpg" alt="IA Automatisation">
+                <div class="site-card-body">
+                    <span class="site-card-title">Automation IA</span>
+                    <span class="site-card-tag">IA</span>
+                </div>
+            </div>
+            <div class="site-card">
+                <img class="site-card-img" src="img1.png" alt="Dev">
+                <div class="site-card-body">
+                    <span class="site-card-title">Dashboard Analytics</span>
+                    <span class="site-card-tag">App Web</span>
+                </div>
+            </div>
+            <div class="site-card">
+                <img class="site-card-img" src="img2.png" alt="Dev 2">
+                <div class="site-card-body">
+                    <span class="site-card-title">Landing Page</span>
+                    <span class="site-card-tag">Vitrine</span>
+                </div>
+            </div>
+            <div class="site-card">
+                <img class="site-card-img" src="img3.png" alt="Dev 3">
+                <div class="site-card-body">
+                    <span class="site-card-title">SaaS Platform</span>
+                    <span class="site-card-tag">IA</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+    <div class="section-label" style="text-align:left; margin-bottom:48px;">
+        <span class="section-eyebrow">Ce qu'on fait</span>
+        <h2 class="section-title">Nos services</h2>
+    </div>
+    <div class="services-grid">
+        <div class="service-card reveal">
+            <div class="service-icon">🖥️</div>
+            <h4>Site Vitrine</h4>
+            <p>Présentez votre activité avec élégance. Design sur-mesure, responsive, optimisé pour convertir vos visiteurs en clients.</p>
+            <a href="services.html">Découvrir →</a>
+        </div>
+        <div class="service-card reveal">
+            <div class="service-icon">🛒</div>
+            <h4>E-commerce</h4>
+            <p>Vendez en ligne avec une boutique performante. Intégration paiement, gestion stock, tunnel de vente optimisé.</p>
+            <a href="services.html">Découvrir →</a>
+        </div>
+        <div class="service-card reveal">
+            <div class="service-icon">🤖</div>
+            <h4>Automatisation IA</h4>
+            <p>Déléguez les tâches répétitives à l'IA. Chatbots, workflows automatisés, intégrations sur-mesure pour votre business.</p>
+            <a href="services.html">Découvrir →</a>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- RÉALISATIONS -->
+<section class="realizations-section" id="realisations">
+    <div class="section-label" style="text-align:left; margin-bottom:48px;">
+        <span class="section-eyebrow">Portfolio</span>
+        <h2 class="section-title">Nos réalisations</h2>
+    </div>
+    <div class="realizations-grid">
+        <div class="realization-card reveal">
+            <img src="projet1.png" alt="Site vitrine">
+            <div class="realization-content">
+                <h4>Site vitrine professionnel</h4>
+                <p>Site moderne optimisé SEO pour une entreprise locale. Résultat : +60% de trafic organique en 3 mois.</p>
+            </div>
+        </div>
+        <div class="realization-card reveal">
+            <img src="projet2.png" alt="E-commerce">
+            <div class="realization-content">
+                <h4>Boutique e-commerce</h4>
+                <p>Interface rapide et optimisée pour maximiser les conversions. Taux de conversion +35% vs ancienne version.</p>
+            </div>
+        </div>
+        <div class="realization-card reveal">
+            <img src="projet3.jpg" alt="IA">
+            <div class="realization-content">
+                <h4>Automatisation IA</h4>
+                <p>Automatisation complète du support client et des workflows internes. Gain de productivité de 70%.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PROJET EN LIGNE -->
+<section class="live-projects-section">
+    <div class="section-label" style="text-align:left; margin-bottom:48px;">
+        <span class="section-eyebrow">Live</span>
+        <h2 class="section-title">En ligne maintenant</h2>
+    </div>
+    <div class="live-projects-grid">
+        <div class="live-project-card reveal">
+            <img src="helios-preview.png" alt="Helios Store">
+            <div class="live-project-content">
+                <h4>Helios Store</h4>
+                <p>Boutique e-commerce premium avec interface responsive, animations fluides et design épuré.</p>
+                <a href="https://helios-store.github.io/helios-store/" target="_blank" class="live-project-btn">
+                    Voir le site →
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PACKS -->
+<section class="packs-section" id="packs">
+    <div class="section-label" style="text-align:center; margin-bottom:56px;">
+        <span class="section-eyebrow">Tarifs</span>
+        <h2 class="section-title">Nos offres</h2>
+        <p class="section-sub">Choisissez le pack adapté à vos besoins</p>
+    </div>
+    <div class="packs-grid">
+        <div class="pack-card reveal">
+            <div class="pack-name">Basic</div>
+            <div class="pack-price"><span class="pack-currency">€</span>200</div>
+            <ul class="pack-features">
+                <li>1 à 3 pages</li>
+                <li>Design responsive</li>
+                <li>Formulaire de contact</li>
+                <li>Hébergement inclus 1 mois</li>
+            </ul>
+            <button class="btn-pack" onclick="addToCart('Basic', 200)">Choisir ce pack</button>
+        </div>
+        <div class="pack-card featured reveal">
+            <div class="pack-name">Premium</div>
+            <div class="pack-price"><span class="pack-currency">€</span>300</div>
+            <ul class="pack-features">
+                <li>3 à 6 pages</li>
+                <li>SEO optimisé</li>
+                <li>Paiement intégré</li>
+                <li>Analytics & reporting</li>
+                <li>Support 30 jours</li>
+            </ul>
+            <button class="btn-pack" onclick="addToCart('Premium', 300)">Choisir ce pack</button>
+        </div>
+        <div class="pack-card reveal">
+            <div class="pack-name">Ultimate</div>
+            <div class="pack-price"><span class="pack-currency">€</span>400</div>
+            <ul class="pack-features">
+                <li>Site complet illimité</li>
+                <li>E-commerce avancé</li>
+                <li>Automatisation IA</li>
+                <li>Maintenance 3 mois</li>
+                <li>Support prioritaire</li>
+            </ul>
+            <button class="btn-pack" onclick="addToCart('Ultimate', 400)">Choisir ce pack</button>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- DEVIS -->
+<section class="quote-section" id="quote">
+    <div class="section-label" style="text-align:center; margin-bottom:48px;">
+        <span class="section-eyebrow">Contact</span>
+        <h2 class="section-title">Devis personnalisé</h2>
+        <p class="section-sub">Décrivez votre projet et recevez une réponse sous 24h</p>
+    </div>
+    <form id="quote-form" class="quote-form">
+        <div class="form-row">
+            <input type="text" name="name" placeholder="Nom complet" required>
+            <input type="email" name="email" placeholder="Email professionnel" required>
+        </div>
+        <input type="text" name="company" placeholder="Nom de l'entreprise (optionnel)">
+        <select name="projectType" required>
+            <option value="">Type de projet</option>
+            <option value="Site vitrine">Site vitrine</option>
+            <option value="E-commerce">E-commerce</option>
+            <option value="Automatisation IA">Automatisation IA</option>
+            <option value="Projet sur mesure">Projet sur mesure</option>
+        </select>
+        <textarea name="description" rows="5" placeholder="Décrivez votre projet : objectifs, fonctionnalités, délais..." required></textarea>
+        <button type="submit" class="btn-submit">Envoyer la demande →</button>
+    </form>
+</section>
+
+<!-- PANIER -->
+<div class="cart" id="cart">
+    <div class="cart-header">
+        <h3>Panier</h3>
+        <span class="close-cart" onclick="closeCart()">✕</span>
+    </div>
+    <div class="cart-items" id="cart-items">
+        <div class="cart-empty">
+            <div class="empty-icon">🛍️</div>
+            <p>Votre panier est vide</p>
+        </div>
+    </div>
+    <div class="cart-footer">
+        <div class="cart-total">
+            <span class="label">Total</span>
+            <span class="amount" id="cart-amount">0€</span>
+        </div>
+        <button class="btn-checkout" onclick="checkout()">Commander →</button>
+    </div>
+</div>
+
+<footer>
+    <p>Copyright © 2026 — <a href="mentions-legales.html">StudWeb AI</a> · Tous droits réservés</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
